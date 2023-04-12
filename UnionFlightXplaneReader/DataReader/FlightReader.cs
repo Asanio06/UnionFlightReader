@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UnionFlightXPReader.FlightData
+namespace UnionFlightXplaneReader.DataReader
 {
-    class Aircraft
+    internal class FlightReader
     {
-        private Aircraft()
+
+        public AircraftReader aircraftReader = AircraftReader.Instance;
+
+
+        private FlightReader()
         {
         }
 
-        public static Aircraft Instance
+        public static FlightReader Instance
         {
             get { return Nested.instance; }
         }
@@ -23,7 +27,7 @@ namespace UnionFlightXPReader.FlightData
             {
             }
 
-            internal static readonly Aircraft instance = new Aircraft();
+            internal static readonly FlightReader instance = new FlightReader();
         }
     }
 }

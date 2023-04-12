@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UnionFlightXPReader.FlightData
+namespace UnionFlightXplaneReader
 {
-    class Flight
+    public class Flight
     {
 
 
-
-
-
+        public Aircraft aircraft = Aircraft.Instance;
+        
 
 
         private Flight()

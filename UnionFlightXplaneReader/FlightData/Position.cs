@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UnionFlightXPReader.FlightData
+namespace UnionFlightXplaneReader
 {
-    class Position
+    public class Position
     {
 
-
-
-
+        
     }
 }

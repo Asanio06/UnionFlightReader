@@ -3,15 +3,15 @@
 
 The objective is to get data from xplane via a UDP connection with the simulator in C#
 
-
+I thank @MaxFerretti. Thanks to the [XPlaneConnector](https://github.com/MaxFerretti/XPlaneConnector) repo  I was able to understand more quickly how udp works with Xplane.
 
 ## MVP
 
 ### From Xplane :
 
-- [ ] Can get Aircraft Speed
-- [ ] Can get Aircraft name
-- [ ] Can get Aircraft registration
+- [x] Can get Aircraft Speed
+- [x] Can get Aircraft name
+- [x] Can get Aircraft registration
 - [ ] Can get Aircraft groundSpeed
 - [ ] Can get Aircraft indicatedSpeed
 - [ ] Can get Aircraft trueAirSpeed
@@ -22,7 +22,7 @@ The objective is to get data from xplane via a UDP connection with the simulator
 
 
 ### Folder structure :
-- [ ] 1 folder for lib source code + 1 folder for exemple
+- [x] 1 folder for lib source code + 1 folder for exemple
 
 ### CI/CD :
 

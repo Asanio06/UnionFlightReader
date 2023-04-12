@@ -2,22 +2,27 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UnionFlightXPReader
+namespace UnionFlightXplaneReader.DataReader
 {
-    public abstract class DataReader
+    internal abstract class DataReader
     {
         public Type type { get; }
-        public dynamic Value { get; set; }
+        public dynamic? Value { get; set; }
 
 
         protected DataReader(Type type)
         {
             this.type = type;
         }
+
+        public virtual void UpdateValue(dynamic value)
+        {
+            Value = value;
+        }
     }
 
 
-    public class StringDataReader : DataReader
+    internal class StringDataReader : DataReader
     {
         public ushort Length { get; set; }
 
@@ -26,7 +31,7 @@ namespace UnionFlightXPReader
             Length = length;
         }
 
-        public void Update(int index, char character)
+        public void UpdateValue(int index, char character)
         {
             if (index == 0)
             {
@@ -47,14 +52,14 @@ namespace UnionFlightXPReader
         }
     }
 
-    public class FloatDataReader : DataReader
+    internal class FloatDataReader : DataReader
     {
         public FloatDataReader() : base(typeof(float))
         {
         }
     }
 
-    public class IntDataReader : DataReader
+    internal class IntDataReader : DataReader
     {
         public IntDataReader() : base(typeof(int))
         {

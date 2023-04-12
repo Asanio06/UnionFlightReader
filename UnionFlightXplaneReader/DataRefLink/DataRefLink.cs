@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using UnionFlightXplaneReader;
+using UnionFlightXplaneReader.DataReader;
 
-namespace UnionFlightXPReader
+namespace UnionFlightXplaneReader
 {
     class DataRefLink
     {
@@ -14,9 +16,9 @@ namespace UnionFlightXPReader
         public string DataRef { get; set; }
         public int Frequency { get; set; }
 
-        public DataReader dataReader;
+        public DataReader.DataReader dataReader;
 
-        public DataRefLink(DataReader dataReader, string dataRef, int frequency = 5)
+        public DataRefLink(DataReader.DataReader dataReader, string dataRef, int frequency = 5)
         {
             lock (lockElement)
             {
@@ -34,7 +36,7 @@ namespace UnionFlightXPReader
     {
         public int CharIndex { get; }
 
-        public CharDataRefLink(DataReader dataReader, string dataRef, int charIndex, int frequency = 5) : base(dataReader,
+        public CharDataRefLink(DataReader.DataReader dataReader, string dataRef, int charIndex, int frequency = 5) : base(dataReader,
             dataRef, frequency)
         {
             CharIndex = charIndex;

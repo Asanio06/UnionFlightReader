@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UnionFlightXPReader
+namespace UnionFlightXplaneReader.DataReader
 {
-    class AircraftReader
+    internal class AircraftReader
     {
-        public DataReader AirspeedDataReader = new FloatDataReader();
-        public DataReader TailNumberDataReader = new StringDataReader(40);
-        public DataReader AircraftNameDataReader = new StringDataReader(250);
+        public DataReader IndicatedAirspeedReader = new FloatDataReader();
+        public DataReader TailNumberReader = new StringDataReader(40);
+        public DataReader NameReader = new StringDataReader(250);
 
 
         private AircraftReader()

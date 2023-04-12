@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UnionFlightXPReader
+namespace UnionFlightXplaneReader
 {
-    public class XPDatagram
+    internal class XPDatagram
     {
         public List<byte> Bytes { get; set; }
 
