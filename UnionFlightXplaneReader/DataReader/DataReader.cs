@@ -7,7 +7,7 @@ namespace UnionFlightXplaneReader.DataReader
     internal abstract class DataReader
     {
         public Type type { get; }
-        public dynamic? Value { get; set; }
+        public dynamic? Value { get; internal set; }
 
 
         protected DataReader(Type type)
@@ -54,8 +54,26 @@ namespace UnionFlightXplaneReader.DataReader
 
     internal class FloatDataReader : DataReader
     {
-        public FloatDataReader() : base(typeof(float))
+        private Func<float, float> convertFunction;
+
+        public FloatDataReader(Func<float,float> convertFunction = null) : base(typeof(float))
         {
+            this.convertFunction = convertFunction;
+
+        }
+
+        public override void UpdateValue(dynamic value)
+        {
+            if (convertFunction != null && value != null)
+            {
+
+                float convertedValue = convertFunction(value);
+                base.UpdateValue(convertedValue);
+
+                return;
+            }
+
+            base.UpdateValue((float) value);
         }
     }
 

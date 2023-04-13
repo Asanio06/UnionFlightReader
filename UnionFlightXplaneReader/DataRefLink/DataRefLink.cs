@@ -6,7 +6,7 @@ using UnionFlightXplaneReader.DataReader;
 
 namespace UnionFlightXplaneReader
 {
-    class DataRefLink
+    internal class DataRefLink
     {
         private static object lockElement = new object();
         private static int current_id = 0;
@@ -32,7 +32,7 @@ namespace UnionFlightXplaneReader
     }
 
 
-    class CharDataRefLink : DataRefLink
+    internal class CharDataRefLink : DataRefLink
     {
         public int CharIndex { get; }
 

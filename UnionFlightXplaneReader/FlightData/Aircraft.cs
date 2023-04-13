@@ -9,12 +9,13 @@ namespace UnionFlightXplaneReader
     {
         private static AircraftReader aircraftReader = AircraftReader.Instance;
 
-        public float? IndicatedAirspeed
-        {
-            get => aircraftReader.IndicatedAirspeedReader.Value;
-        }
+        public float? IndicatedAirspeed => aircraftReader.IndicatedAirspeedReader.Value ;
 
-        public string? TailNumber
+        public float? Groundspeed => aircraftReader.Groundspeed.Value;
+
+        public float? TrueAirspeed => aircraftReader.TrueAirSpeed.Value;
+
+        public string TailNumber
         {
             get => aircraftReader.TailNumberReader.Value;
         }

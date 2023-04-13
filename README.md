@@ -9,12 +9,11 @@ I thank @MaxFerretti. Thanks to the [XPlaneConnector](https://github.com/MaxFerr
 
 ### From Xplane :
 
-- [x] Can get Aircraft Speed
 - [x] Can get Aircraft name
 - [x] Can get Aircraft registration
-- [ ] Can get Aircraft groundSpeed
-- [ ] Can get Aircraft indicatedSpeed
-- [ ] Can get Aircraft trueAirSpeed
+- [x] Can get Aircraft Indicated Speed
+- [x] Can get Aircraft groundSpeed
+- [x] Can get Aircraft trueAirSpeed
 - [ ] Can get Aircraft heading
 - [ ] Can get Aircraft verticalSpeed
 - [ ] Can get Aircraft Position

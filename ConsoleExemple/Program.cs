@@ -25,10 +25,17 @@ namespace ConsoleExemple
             {
                 Console.WriteLine(
                     $"TailNumberReader = {aircraft.TailNumber}");
+
                 Console.WriteLine(
                     $"IndicatedAirspeedReader = {aircraft.IndicatedAirspeed}");
-               Console.WriteLine(
+                Console.WriteLine(
+                    $"TrueAirspeed = {aircraft.TrueAirspeed}");
+                Console.WriteLine(
+                    $"Groundspeed = {aircraft.Groundspeed}");
+
+                Console.WriteLine(
                     $"Name = {aircraft.Name}");
+
 
                 Thread.Sleep(2000);
             }

@@ -7,6 +7,8 @@ namespace UnionFlightXplaneReader.DataReader
     internal class AircraftReader
     {
         public DataReader IndicatedAirspeedReader = new FloatDataReader();
+        public DataReader Groundspeed = new FloatDataReader(Utils.getKnotsFromMeterPerSeconds);
+        public DataReader TrueAirSpeed = new FloatDataReader(Utils.getKnotsFromMeterPerSeconds);
         public DataReader TailNumberReader = new StringDataReader(40);
         public DataReader NameReader = new StringDataReader(250);
 

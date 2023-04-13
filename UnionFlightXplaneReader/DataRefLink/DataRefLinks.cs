@@ -8,7 +8,6 @@ namespace UnionFlightXplaneReader
 {
     internal class DataRefLinks
     {
-
         public static List<DataRefLink> UsedDataRefLinks = new()
         {
             new DataRefLink
@@ -26,6 +25,16 @@ namespace UnionFlightXplaneReader
                 FlightReader.Instance.aircraftReader.NameReader,
                 "sim/aircraft/view/acf_ui_name"
             ),
+            new DataRefLink
+            (
+                FlightReader.Instance.aircraftReader.Groundspeed,
+                "sim/flightmodel/position/groundspeed"
+            ),
+            new DataRefLink
+            (
+                FlightReader.Instance.aircraftReader.TrueAirSpeed,
+                "sim/flightmodel/position/true_airspeed"
+            ),
         };
 
 
@@ -38,7 +47,7 @@ namespace UnionFlightXplaneReader
                     var dataReader = dataRef.dataReader;
                     if (dataReader.type == typeof(string))
                     {
-                        var stringDataReader = (StringDataReader)dataReader;
+                        var stringDataReader = (StringDataReader) dataReader;
 
                         for (int charIndex = 0; charIndex < stringDataReader.Length; charIndex++)
                         {
@@ -53,13 +62,11 @@ namespace UnionFlightXplaneReader
                     }
                 }
             );
-
         }
 
         public static Dictionary<int, DataRefLink> GetDataRefLinksDictionary()
         {
             return dataRefLinksDictionary;
         }
-
     }
 }
