@@ -16,6 +16,8 @@ namespace UnionFlightXplaneReader
         public float? TrueAirspeed => aircraftReader.TrueAirSpeed.Value;
         public double? Altitude => aircraftReader.Altitude.Value;
         public double? HeightAgl => aircraftReader.HeightAgl.Value;
+        public double? Longitude => aircraftReader.Longitude.Value;
+        public double? Latitude => aircraftReader.Latitude.Value;
         public float? VerticalSpeed => aircraftReader.VerticalSpeed.Value;
         public float? Heading => aircraftReader.Heading.Value;
 
@@ -29,7 +31,6 @@ namespace UnionFlightXplaneReader
             get => aircraftReader.NameReader.Value;
         }
 
-        public Position position = new Position();
 
 
         private Aircraft()

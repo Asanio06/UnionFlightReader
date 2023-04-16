@@ -31,7 +31,7 @@ namespace ConsoleExemple
             {
                 Console.WriteLine(
                     $"-----------------------------------------------------------");
-                
+
                 Console.WriteLine(
                     $"TailNumberReader = {aircraft.TailNumber}");
 
@@ -60,6 +60,12 @@ namespace ConsoleExemple
 
                 Console.WriteLine(
                     $"Heading = {format(aircraft.Heading)}");
+
+                Console.WriteLine(
+                    $"Latitude = {format(aircraft.Latitude)}");
+
+                Console.WriteLine(
+                    $"Longitude = {format(aircraft.Longitude)}");
 
                 Console.WriteLine(
                     $"-----------------------------------------------------------");

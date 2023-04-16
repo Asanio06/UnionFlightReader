@@ -55,6 +55,16 @@ namespace UnionFlightXplaneReader
                 FlightReader.Instance.aircraftReader.VerticalSpeed,
                 "sim/flightmodel/position/vh_ind_fpm"
             ),
+            new DataRefLink
+            (
+                FlightReader.Instance.aircraftReader.Latitude,
+                "sim/flightmodel/position/latitude"
+            ),
+            new DataRefLink
+            (
+                FlightReader.Instance.aircraftReader.Longitude,
+                "sim/flightmodel/position/longitude"
+            ),
         };
 
 

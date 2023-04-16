@@ -13,6 +13,8 @@ namespace UnionFlightXplaneReader.DataReader
         public DataReader Altitude = new DoubleDataReader(Utils.getFeetFromMeter); // Based on sea level
         public DataReader HeightAgl = new DoubleDataReader(Utils.getFeetFromMeter);
         public DataReader VerticalSpeed = new FloatDataReader();
+        public DataReader Longitude = new DoubleDataReader();
+        public DataReader Latitude = new DoubleDataReader();
         public DataReader TailNumberReader = new StringDataReader(40);
         public DataReader NameReader = new StringDataReader(250);
 

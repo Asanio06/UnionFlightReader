@@ -16,8 +16,7 @@ I thank @MaxFerretti. Thanks to the [XPlaneConnector](https://github.com/MaxFerr
 - [x] Can get Aircraft trueAirSpeed
 - [x] Can get Aircraft heading
 - [x] Can get Aircraft verticalSpeed
-- [ ] Can get Aircraft Position
-- [x] Can get Aircraft Altitude
+- [x] Can get Aircraft Position
 - [ ] Know if sim is launched
 
 
