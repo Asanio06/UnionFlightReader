@@ -21,22 +21,48 @@ namespace ConsoleExemple
         {
             xpReader.run();
 
+            Func<dynamic, string> format = x =>
+            {
+                if (x == null) return "0";
+                return string.Format("{0:0.##}", x);
+            };
+
             while (true)
             {
+                Console.WriteLine(
+                    $"-----------------------------------------------------------");
+                
                 Console.WriteLine(
                     $"TailNumberReader = {aircraft.TailNumber}");
 
                 Console.WriteLine(
-                    $"IndicatedAirspeedReader = {aircraft.IndicatedAirspeed}");
+                    $"IndicatedAirspeedReader = {format(aircraft.IndicatedAirspeed)}");
+
                 Console.WriteLine(
-                    $"TrueAirspeed = {aircraft.TrueAirspeed}");
+                    $"TrueAirspeed = {format(aircraft.TrueAirspeed)}");
+
                 Console.WriteLine(
-                    $"Groundspeed = {aircraft.Groundspeed}");
+                    $"Groundspeed = {format(aircraft.Groundspeed)}");
 
                 Console.WriteLine(
                     $"Name = {aircraft.Name}");
 
 
+                Console.WriteLine(
+                    $"Altitude = {format(aircraft.Altitude)}");
+
+
+                Console.WriteLine(
+                    $"HeightAgl = {format(aircraft.HeightAgl)}");
+
+                Console.WriteLine(
+                    $"VerticalSpeed = {format(aircraft.VerticalSpeed)}");
+
+                Console.WriteLine(
+                    $"Heading = {format(aircraft.Heading)}");
+
+                Console.WriteLine(
+                    $"-----------------------------------------------------------");
                 Thread.Sleep(2000);
             }
         }

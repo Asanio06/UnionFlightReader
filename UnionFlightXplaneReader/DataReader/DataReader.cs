@@ -64,16 +64,41 @@ namespace UnionFlightXplaneReader.DataReader
 
         public override void UpdateValue(dynamic value)
         {
-            if (convertFunction != null && value != null)
+            if (convertFunction != null)
             {
 
-                float convertedValue = convertFunction(value);
+                float convertedValue = convertFunction((float) value);
                 base.UpdateValue(convertedValue);
 
                 return;
             }
 
             base.UpdateValue((float) value);
+        }
+    }
+    internal class DoubleDataReader : DataReader
+    {
+        private Func<double, double> convertFunction;
+
+        public DoubleDataReader(Func<double, double> convertFunction = null) : base(typeof(double))
+        {
+            this.convertFunction = convertFunction;
+
+        }
+
+        public override void UpdateValue(dynamic value)
+        {
+            if (convertFunction != null)
+            {
+
+                double convertedValue = convertFunction((double) value);
+                base.UpdateValue(convertedValue);
+
+                return;
+            }
+
+
+            base.UpdateValue((double) value);
         }
     }
 

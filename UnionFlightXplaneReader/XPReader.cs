@@ -52,7 +52,7 @@ namespace UnionFlightXplaneReader
             var token = cancelationTokenSource.Token;
 
 
-            Task.Run(async () =>
+            Task.Factory.StartNew(async () =>
             {
                 while (!token.IsCancellationRequested)
                 {
@@ -63,9 +63,9 @@ namespace UnionFlightXplaneReader
                 }
 
                 server.Close();
-            }, token);
+            }, token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
 
-            Task.Run(async () =>
+            Task.Factory.StartNew(async () =>
             {
                 while (!token.IsCancellationRequested)
                 {
@@ -73,7 +73,7 @@ namespace UnionFlightXplaneReader
 
                     await Task.Delay(CheckInterval_ms).ConfigureAwait(false);
                 }
-            }, token);
+            }, token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
         }
 
 

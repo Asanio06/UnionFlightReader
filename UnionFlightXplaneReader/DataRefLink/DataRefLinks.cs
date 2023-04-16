@@ -35,6 +35,26 @@ namespace UnionFlightXplaneReader
                 FlightReader.Instance.aircraftReader.TrueAirSpeed,
                 "sim/flightmodel/position/true_airspeed"
             ),
+            new DataRefLink
+            (
+                FlightReader.Instance.aircraftReader.Heading,
+                "sim/flightmodel/position/mag_psi"
+            ),
+            new DataRefLink
+            (
+                FlightReader.Instance.aircraftReader.Altitude,
+                "sim/flightmodel/position/elevation"
+            ),
+            new DataRefLink
+            (
+                FlightReader.Instance.aircraftReader.HeightAgl,
+                "sim/flightmodel/position/y_agl"
+            ),
+            new DataRefLink
+            (
+                FlightReader.Instance.aircraftReader.VerticalSpeed,
+                "sim/flightmodel/position/vh_ind_fpm"
+            ),
         };
 
 

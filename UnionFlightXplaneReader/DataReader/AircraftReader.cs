@@ -9,6 +9,10 @@ namespace UnionFlightXplaneReader.DataReader
         public DataReader IndicatedAirspeedReader = new FloatDataReader();
         public DataReader Groundspeed = new FloatDataReader(Utils.getKnotsFromMeterPerSeconds);
         public DataReader TrueAirSpeed = new FloatDataReader(Utils.getKnotsFromMeterPerSeconds);
+        public DataReader Heading = new FloatDataReader();
+        public DataReader Altitude = new DoubleDataReader(Utils.getFeetFromMeter); // Based on sea level
+        public DataReader HeightAgl = new DoubleDataReader(Utils.getFeetFromMeter);
+        public DataReader VerticalSpeed = new FloatDataReader();
         public DataReader TailNumberReader = new StringDataReader(40);
         public DataReader NameReader = new StringDataReader(250);
 

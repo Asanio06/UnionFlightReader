@@ -14,10 +14,11 @@ I thank @MaxFerretti. Thanks to the [XPlaneConnector](https://github.com/MaxFerr
 - [x] Can get Aircraft Indicated Speed
 - [x] Can get Aircraft groundSpeed
 - [x] Can get Aircraft trueAirSpeed
-- [ ] Can get Aircraft heading
-- [ ] Can get Aircraft verticalSpeed
+- [x] Can get Aircraft heading
+- [x] Can get Aircraft verticalSpeed
 - [ ] Can get Aircraft Position
-- [ ] Can get Aircraft Altitude
+- [x] Can get Aircraft Altitude
+- [ ] Know if sim is launched
 
 
 ### Folder structure :

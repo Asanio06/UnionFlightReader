@@ -18,7 +18,7 @@ namespace UnionFlightXplaneReader
 
         public DataReader.DataReader dataReader;
 
-        public DataRefLink(DataReader.DataReader dataReader, string dataRef, int frequency = 5)
+        public DataRefLink(DataReader.DataReader dataReader, string dataRef, int frequency = 15)
         {
             lock (lockElement)
             {

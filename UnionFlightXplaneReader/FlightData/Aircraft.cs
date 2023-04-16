@@ -14,6 +14,10 @@ namespace UnionFlightXplaneReader
         public float? Groundspeed => aircraftReader.Groundspeed.Value;
 
         public float? TrueAirspeed => aircraftReader.TrueAirSpeed.Value;
+        public double? Altitude => aircraftReader.Altitude.Value;
+        public double? HeightAgl => aircraftReader.HeightAgl.Value;
+        public float? VerticalSpeed => aircraftReader.VerticalSpeed.Value;
+        public float? Heading => aircraftReader.Heading.Value;
 
         public string TailNumber
         {
