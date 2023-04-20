@@ -12,57 +12,62 @@ namespace UnionFlightXplaneReader
         {
             new DataRefLink
             (
-                FlightReader.Instance.aircraftReader.IndicatedAirspeedReader,
+                XPReader.Instance.connection,
+                "sim/network/misc/connection_handshake"
+            ),
+            new DataRefLink
+            (
+                AircraftReader.Instance.IndicatedAirspeedReader,
                 "sim/flightmodel/position/indicated_airspeed"
             ),
             new DataRefLink
             (
-                FlightReader.Instance.aircraftReader.TailNumberReader,
+                AircraftReader.Instance.TailNumberReader,
                 "sim/aircraft/view/acf_tailnum"
             ),
             new DataRefLink
             (
-                FlightReader.Instance.aircraftReader.NameReader,
+                AircraftReader.Instance.NameReader,
                 "sim/aircraft/view/acf_ui_name"
             ),
             new DataRefLink
             (
-                FlightReader.Instance.aircraftReader.Groundspeed,
+                AircraftReader.Instance.Groundspeed,
                 "sim/flightmodel/position/groundspeed"
             ),
             new DataRefLink
             (
-                FlightReader.Instance.aircraftReader.TrueAirSpeed,
+                AircraftReader.Instance.TrueAirSpeed,
                 "sim/flightmodel/position/true_airspeed"
             ),
             new DataRefLink
             (
-                FlightReader.Instance.aircraftReader.Heading,
+                AircraftReader.Instance.Heading,
                 "sim/flightmodel/position/mag_psi"
             ),
             new DataRefLink
             (
-                FlightReader.Instance.aircraftReader.Altitude,
+                AircraftReader.Instance.Altitude,
                 "sim/flightmodel/position/elevation"
             ),
             new DataRefLink
             (
-                FlightReader.Instance.aircraftReader.HeightAgl,
+                AircraftReader.Instance.HeightAgl,
                 "sim/flightmodel/position/y_agl"
             ),
             new DataRefLink
             (
-                FlightReader.Instance.aircraftReader.VerticalSpeed,
+                AircraftReader.Instance.VerticalSpeed,
                 "sim/flightmodel/position/vh_ind_fpm"
             ),
             new DataRefLink
             (
-                FlightReader.Instance.aircraftReader.Latitude,
+                AircraftReader.Instance.Latitude,
                 "sim/flightmodel/position/latitude"
             ),
             new DataRefLink
             (
-                FlightReader.Instance.aircraftReader.Longitude,
+                AircraftReader.Instance.Longitude,
                 "sim/flightmodel/position/longitude"
             ),
         };

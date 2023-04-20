@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -13,18 +14,20 @@ namespace UnionFlightXplaneReader
     {
         private UdpClient server;
         private UdpClient client;
-        private Task serverTask;
-        private Task observerTask;
+
         private const int CheckInterval_ms = 1000;
-        
+
         private CancellationTokenSource cancelationTokenSource;
 
         private static Dictionary<int, DataRefLink> dataRefLinksDictionary = DataRefLinks.GetDataRefLinksDictionary();
 
+        internal IntDataReader connection = new IntDataReader();
+
+        private const ushort XpPort = 49000;
 
         private XPReader()
         {
-            IPEndPoint XPlaneEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 49000);
+            IPEndPoint XPlaneEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), XpPort);
             client = new UdpClient();
             client.Connect(XPlaneEP.Address, XPlaneEP.Port);
             server = new UdpClient((IPEndPoint) client.Client.LocalEndPoint);
@@ -47,6 +50,23 @@ namespace UnionFlightXplaneReader
             internal static readonly XPReader instance = new();
         }
 
+        bool SocketConnected(Socket s)
+        {
+            bool part1 = s.Poll(1000, SelectMode.SelectRead);
+            bool part2 = (s.Available == 0);
+            if (part1 && part2)
+                return false;
+            else
+                return true;
+        }
+
+        public bool TestSimConnection()
+        {
+            return System.Net.NetworkInformation.IPGlobalProperties.GetIPGlobalProperties().GetActiveUdpListeners()
+                .Any(p => p.Port == XpPort);
+        }
+
+
         public void run()
         {
             var token = cancelationTokenSource.Token;
@@ -58,6 +78,8 @@ namespace UnionFlightXplaneReader
                 {
                     var response = await server.ReceiveAsync().ConfigureAwait(false);
                     var buffer = response.Buffer;
+
+                    Console.WriteLine("Receive response");
 
                     updateDataReader(buffer);
                 }
@@ -130,6 +152,7 @@ namespace UnionFlightXplaneReader
 
         private void requestDataRefs()
         {
+            Console.WriteLine("LALAL");
             foreach (var (id, dataRefLink) in dataRefLinksDictionary)
             {
                 var dg = new XPDatagram();
@@ -139,8 +162,24 @@ namespace UnionFlightXplaneReader
                 dg.Add(dataRefLink.DataRef);
                 dg.FillTo(413);
 
-                client.Send(dg.Get(), dg.Len);
+                try
+                {
+                    var a = client.Send(dg.Get(), dg.Len);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
             }
+        }
+
+
+        private void Stop()
+        {
+            client.Close();
+            server.Close();
+
+            cancelationTokenSource.Dispose();
         }
     }
 }

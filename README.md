@@ -17,7 +17,8 @@ I thank @MaxFerretti. Thanks to the [XPlaneConnector](https://github.com/MaxFerr
 - [x] Can get Aircraft heading
 - [x] Can get Aircraft verticalSpeed
 - [x] Can get Aircraft Position
-- [ ] Know if sim is launched
+- [x] Know if sim is launched
+- [x] Can close connection
 
 
 ### Folder structure :
