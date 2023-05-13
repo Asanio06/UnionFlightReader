@@ -1,14 +1,14 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <ApplicationIcon />
-    <Win32Resource />
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\FlightDataClass\FlightDataClass.csproj" />
+    <ProjectReference Include="..\UnionFlightXplaneReader\UnionFlightXplaneReader.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,11 +6,13 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using UnionFlight;
+using UnionFlight.FlightData;
 using UnionFlightXplaneReader.DataReader;
 
 namespace UnionFlightXplaneReader
 {
-    public class XPReader
+    public class XPReader : IFlightReader
     {
         private UdpClient server;
         private UdpClient client;
@@ -25,6 +27,10 @@ namespace UnionFlightXplaneReader
 
         private const ushort XpPort = 49000;
 
+        public IFlight flight => Flight.Instance;
+
+        public string SimName => "Xplane 11"; // TODO: Change to function
+
         private XPReader()
         {
             IPEndPoint XPlaneEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), XpPort);
@@ -34,33 +40,13 @@ namespace UnionFlightXplaneReader
             cancelationTokenSource = new CancellationTokenSource();
         }
 
-        public static XPReader Instance
+
+        public string GetSimName()
         {
-            get { return Nested.instance; }
+            return "temp";
         }
 
-        private class Nested
-        {
-            // Explicit static constructor to tell C# compiler
-            // not to mark type as beforefieldinit
-            static Nested()
-            {
-            }
-
-            internal static readonly XPReader instance = new();
-        }
-
-        bool SocketConnected(Socket s)
-        {
-            bool part1 = s.Poll(1000, SelectMode.SelectRead);
-            bool part2 = (s.Available == 0);
-            if (part1 && part2)
-                return false;
-            else
-                return true;
-        }
-
-        public bool TestSimConnection()
+        public bool isLaunched()
         {
             return System.Net.NetworkInformation.IPGlobalProperties.GetIPGlobalProperties().GetActiveUdpListeners()
                 .Any(p => p.Port == XpPort);
@@ -78,8 +64,6 @@ namespace UnionFlightXplaneReader
                 {
                     var response = await server.ReceiveAsync().ConfigureAwait(false);
                     var buffer = response.Buffer;
-
-                    Console.WriteLine("Receive response");
 
                     updateDataReader(buffer);
                 }
@@ -152,7 +136,6 @@ namespace UnionFlightXplaneReader
 
         private void requestDataRefs()
         {
-            Console.WriteLine("LALAL");
             foreach (var (id, dataRefLink) in dataRefLinksDictionary)
             {
                 var dg = new XPDatagram();
@@ -174,12 +157,30 @@ namespace UnionFlightXplaneReader
         }
 
 
-        private void Stop()
+        public void stop()
         {
             client.Close();
             server.Close();
 
             cancelationTokenSource.Dispose();
+        }
+
+
+        public static XPReader Instance
+        {
+            get { return Nested.instance; }
+        }
+
+
+        private class Nested
+        {
+            // Explicit static constructor to tell C# compiler
+            // not to mark type as beforefieldinit
+            static Nested()
+            {
+            }
+
+            internal static readonly XPReader instance = new();
         }
     }
 }

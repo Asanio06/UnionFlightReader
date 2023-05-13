@@ -3,10 +3,11 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\UnionFlightXplaneReader\UnionFlightXplaneReader.csproj" />
+    <ProjectReference Include="..\UnionFlight\UnionFlight.csproj" />
   </ItemGroup>
 
 </Project>

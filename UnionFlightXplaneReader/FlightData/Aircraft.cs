@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using UnionFlight.FlightData;
 using UnionFlightXplaneReader.DataReader;
 
 namespace UnionFlightXplaneReader
 {
-    public class Aircraft
+    public class Aircraft : IAircraft
     {
         private static AircraftReader aircraftReader = AircraftReader.Instance;
 
