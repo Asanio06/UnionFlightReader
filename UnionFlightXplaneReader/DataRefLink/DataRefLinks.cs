@@ -70,6 +70,16 @@ namespace UnionFlightXplaneReader
                 AircraftReader.Instance.Longitude,
                 "sim/flightmodel/position/longitude"
             ),
+            new DataRefLink
+            (
+                SimulatorReader.Instance.XplaneInternalVersion,
+                "sim/version/xplane_internal_version"
+            ),
+            new DataRefLink
+            (
+                SimulatorReader.Instance.XplaneSimSpeed,
+                "sim/time/sim_speed_actual"
+            )
         };
 
 

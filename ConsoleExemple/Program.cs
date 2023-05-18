@@ -16,24 +16,24 @@ namespace ConsoleExemple
 
         static void Main(string[] args)
         {
-            unionFlight.run();
 
             Func<dynamic, string> format = x =>
             {
                 if (x == null) return "0";
                 return string.Format("{0:0.##}", x);
             };
-
             while (true)
             {
                 if (unionFlight.IsLaunched())
                 {
-                  
+                    var simulator = unionFlight.simulator;
+                    var aircraft = unionFlight.aircraft;
 
                     Console.WriteLine(
                         $"-----------------------------------------------------------");
 
-                    Console.WriteLine(unionFlight.GetSimName());
+                    Console.WriteLine($"IsFlightLaunched = {simulator.IsFlightLaunched}");
+                    Console.WriteLine($"SimulatorName = {simulator.SimulatorName}");
 
 //                    Console.WriteLine(
 //                        $"TailNumberReader = {aircraft.TailNumber}");
@@ -77,7 +77,8 @@ namespace ConsoleExemple
                 {
                     Console.WriteLine("Not Launched");
                 }
-                Thread.Sleep(2000);
+
+                Thread.Sleep(5000);
             }
         }
     }

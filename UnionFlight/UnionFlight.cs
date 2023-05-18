@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FlightDataClass;
 using UnionFlight.FlightData;
 using UnionFlightXplaneReader;
 
 namespace UnionFlight
 {
-    public class UnionFlight
+    public class UnionFlight : IUnionFlight
     {
         private List<IFlightReader> _flightReaders = new List<IFlightReader>() {XPReader.Instance};
 
         private IFlightReader? _flightReader = null;
 
         public IFlight? flight => _flightReader != null ? _flightReader.flight : null;
+        public IAircraft? aircraft => _flightReader != null ? _flightReader.aircraft : null;
+        public ISim? simulator => _flightReader != null ? _flightReader.simulator : null;
 
 
         public void run()
@@ -34,11 +37,6 @@ namespace UnionFlight
         public void stop()
         {
             _flightReader.stop();
-        }
-
-        public string GetSimName()
-        {
-            return _flightReader.GetSimName();
         }
 
 
@@ -69,6 +67,7 @@ namespace UnionFlight
             return true;
         }
 
+        private UnionFlight(){}
 
         public static UnionFlight Instance
         {

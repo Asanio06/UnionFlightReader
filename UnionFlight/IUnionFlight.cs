@@ -8,16 +8,15 @@ using UnionFlight.FlightData;
 
 namespace UnionFlight
 {
-    public interface IFlightReader
+    internal interface IUnionFlight
     {
-        public IFlight flight { get; }
-        public IAircraft aircraft { get; }
-        public ISim simulator { get; }
+        public IFlight? flight { get; }
+        public IAircraft? aircraft { get; }
+        public ISim? simulator { get; }
 
-        public bool isLaunched();
 
         public void run();
-
         public void stop();
+        public bool IsLaunched();
     }
 }

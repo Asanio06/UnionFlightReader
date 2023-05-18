@@ -6,9 +6,11 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using FlightDataClass;
 using UnionFlight;
 using UnionFlight.FlightData;
 using UnionFlightXplaneReader.DataReader;
+using UnionFlightXplaneReader.FlightData;
 
 namespace UnionFlightXplaneReader
 {
@@ -17,7 +19,7 @@ namespace UnionFlightXplaneReader
         private UdpClient server;
         private UdpClient client;
 
-        private const int CheckInterval_ms = 1000;
+        private const int CheckInterval_ms = 5000;
 
         private CancellationTokenSource cancelationTokenSource;
 
@@ -28,8 +30,9 @@ namespace UnionFlightXplaneReader
         private const ushort XpPort = 49000;
 
         public IFlight flight => Flight.Instance;
+        public IAircraft aircraft => Aircraft.Instance;
+        public ISim simulator => Simulator.Instance;
 
-        public string SimName => "Xplane 11"; // TODO: Change to function
 
         private XPReader()
         {
@@ -40,11 +43,6 @@ namespace UnionFlightXplaneReader
             cancelationTokenSource = new CancellationTokenSource();
         }
 
-
-        public string GetSimName()
-        {
-            return "temp";
-        }
 
         public bool isLaunched()
         {

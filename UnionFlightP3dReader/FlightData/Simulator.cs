@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UnionFlight.FlightData
+namespace UnionFlightP3dReader.FlightData
 {
-    public interface IFlight
+    internal class Simulator
     {
-        public IAircraft aircraft { get; }
     }
 }
