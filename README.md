@@ -1,13 +1,13 @@
-# UnionFlight Xplane Data Reader
+# UnionFlight Data Reader
 
-
-The objective is to get data from xplane via a UDP connection with the simulator in C#
-
-I thank @MaxFerretti. Thanks to the [XPlaneConnector](https://github.com/MaxFerretti/XPlaneConnector) repo  I was able to understand more quickly how udp works with Xplane.
 
 ## MVP
 
 ### From Xplane :
+
+The objective is to get data from xplane via a UDP connection with the simulator
+
+I thank @MaxFerretti. Thanks to the [XPlaneConnector](https://github.com/MaxFerretti/XPlaneConnector) repo  I was able to understand more quickly how udp works with Xplane.
 
 - [x] Can get Aircraft name
 - [x] Can get Aircraft registration
@@ -19,6 +19,39 @@ I thank @MaxFerretti. Thanks to the [XPlaneConnector](https://github.com/MaxFerr
 - [x] Can get Aircraft Position
 - [x] Know if sim is launched
 - [x] Can close connection
+- [ ] Know if sim is paused
+- [ ] Know if flight is started
+
+### From MFS2020 :
+
+- [ ] Can get Aircraft name
+- [ ] Can get Aircraft registration
+- [ ] Can get Aircraft Indicated Speed
+- [ ] Can get Aircraft groundSpeed
+- [ ] Can get Aircraft trueAirSpeed
+- [ ] Can get Aircraft heading
+- [ ] Can get Aircraft verticalSpeed
+- [ ] Can get Aircraft Position
+- [ ] Know if sim is launched
+- [ ] Can close connection
+- [ ] Know if sim is paused
+- [ ] Know if flight is started
+
+
+### From P3D :
+
+- [ ] Can get Aircraft name
+- [ ] Can get Aircraft registration
+- [ ] Can get Aircraft Indicated Speed
+- [ ] Can get Aircraft groundSpeed
+- [ ] Can get Aircraft trueAirSpeed
+- [ ] Can get Aircraft heading
+- [ ] Can get Aircraft verticalSpeed
+- [ ] Can get Aircraft Position
+- [ ] Know if sim is launched
+- [ ] Can close connection
+- [ ] Know if sim is paused
+- [ ] Know if flight is started
 
 
 ### Folder structure :
