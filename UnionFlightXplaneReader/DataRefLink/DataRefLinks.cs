@@ -10,6 +10,8 @@ namespace UnionFlightXplaneReader
     {
         public static List<DataRefLink> UsedDataRefLinks = new()
         {
+            // sim/time/paused
+            // 
             new DataRefLink
             (
                 XPReader.Instance.connection,
