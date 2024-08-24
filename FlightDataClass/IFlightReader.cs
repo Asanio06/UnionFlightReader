@@ -14,7 +14,7 @@ namespace UnionFlight
         public IAircraft aircraft { get; }
         public ISim simulator { get; }
 
-        public bool isLaunched();
+        public bool IsSimLaunched();
 
         public void run();
 

@@ -81,6 +81,11 @@ namespace UnionFlightXplaneReader
             (
                 SimulatorReader.Instance.XplaneSimSpeed,
                 "sim/time/sim_speed_actual"
+            ),
+            new DataRefLink
+            (
+                SimulatorReader.Instance.IsSimPaused,
+                "sim/time/paused"
             )
         };
 

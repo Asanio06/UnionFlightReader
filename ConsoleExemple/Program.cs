@@ -34,6 +34,7 @@ namespace ConsoleExemple
 
                     Console.WriteLine($"IsFlightLaunched = {simulator.IsFlightLaunched}");
                     Console.WriteLine($"SimulatorName = {simulator.SimulatorName}");
+                    Console.WriteLine($"IsPaused = {simulator.IsSimPaused}");
 
 //                    Console.WriteLine(
 //                        $"TailNumberReader = {aircraft.TailNumber}");

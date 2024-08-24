@@ -9,6 +9,7 @@ namespace UnionFlightXplaneReader.DataReader
     internal class SimulatorReader
     {
         public DataReader XplaneInternalVersion = new IntDataReader();
+        public DataReader IsSimPaused = new IntDataReader();
         public DataReader XplaneSimSpeed = new FloatDataReader();
 
 

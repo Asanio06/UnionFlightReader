@@ -24,7 +24,7 @@ namespace UnionFlight
         {
             foreach (var flightReader in _flightReaders)
             {
-                if (flightReader.isLaunched())
+                if (flightReader.IsSimLaunched())
                 {
                     _flightReader = flightReader;
                     flightReader.run();
@@ -46,7 +46,7 @@ namespace UnionFlight
             {
                 foreach (var flightReader in _flightReaders)
                 {
-                    if (flightReader.isLaunched())
+                    if (flightReader.IsSimLaunched())
                     {
                         _flightReader = flightReader;
                         flightReader.run();
@@ -58,7 +58,7 @@ namespace UnionFlight
                 return false;
             }
 
-            if (!_flightReader.isLaunched())
+            if (!_flightReader.IsSimLaunched())
             {
                 _flightReader = null;
                 return false;

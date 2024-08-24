@@ -73,7 +73,7 @@ namespace UnionFlightXplaneReader.DataReader
                 return;
             }
 
-            base.UpdateValue((float) value);
+            base.UpdateValue((float?) value);
         }
     }
     internal class DoubleDataReader : DataReader
@@ -98,7 +98,7 @@ namespace UnionFlightXplaneReader.DataReader
             }
 
 
-            base.UpdateValue((double) value);
+            base.UpdateValue((double?) value);
         }
     }
 
@@ -106,6 +106,12 @@ namespace UnionFlightXplaneReader.DataReader
     {
         public IntDataReader() : base(typeof(int))
         {
+
+        }
+
+        public override void UpdateValue(dynamic value)
+        {
+            base.UpdateValue((int?) value);
         }
     }
 }

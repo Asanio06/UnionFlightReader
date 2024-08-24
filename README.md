@@ -19,8 +19,8 @@ I thank @MaxFerretti. Thanks to the [XPlaneConnector](https://github.com/MaxFerr
 - [x] Can get Aircraft Position
 - [x] Know if sim is launched
 - [x] Can close connection
-- [ ] Know if sim is paused
-- [ ] Know if flight is started
+- [x] Know if sim is paused
+- [x] Know if flight is started
 
 ### From MFS2020 :
 

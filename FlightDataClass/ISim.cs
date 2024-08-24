@@ -10,6 +10,7 @@ namespace FlightDataClass
     {
 
         public bool? IsFlightLaunched { get; }
+        public bool? IsSimPaused { get; }
         public string? SimulatorName { get; }
 
     }

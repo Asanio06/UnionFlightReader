@@ -44,7 +44,7 @@ namespace UnionFlightXplaneReader
         }
 
 
-        public bool isLaunched()
+        public bool IsSimLaunched()
         {
             return System.Net.NetworkInformation.IPGlobalProperties.GetIPGlobalProperties().GetActiveUdpListeners()
                 .Any(p => p.Port == XpPort);

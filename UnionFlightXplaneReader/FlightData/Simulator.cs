@@ -30,6 +30,18 @@ namespace UnionFlightXplaneReader.FlightData
                 return _xplaneSimSpeed != null && _xplaneSimSpeed != 0.0f;
             }
         }
+        public bool? IsSimPaused
+        {
+            get
+            {
+                int? isSimPaused = SimulatorReader.Instance.IsSimPaused.Value;
+
+                return isSimPaused != 0;
+            }
+        }
+
+
+
 
 
         private Simulator()
@@ -40,6 +52,7 @@ namespace UnionFlightXplaneReader.FlightData
         {
             get { return Nested.instance; }
         }
+
 
         private class Nested
         {
