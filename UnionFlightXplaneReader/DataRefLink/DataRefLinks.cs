@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using UnionFlightXplaneReader;
+﻿using System.Collections.Generic;
 using UnionFlightXplaneReader.DataReader;
 
 namespace UnionFlightXplaneReader
@@ -10,8 +7,6 @@ namespace UnionFlightXplaneReader
     {
         public static List<DataRefLink> UsedDataRefLinks = new()
         {
-            // sim/time/paused
-            // 
             new DataRefLink
             (
                 XPReader.Instance.connection,
@@ -99,7 +94,7 @@ namespace UnionFlightXplaneReader
                     var dataReader = dataRef.dataReader;
                     if (dataReader.type == typeof(string))
                     {
-                        var stringDataReader = (StringDataReader) dataReader;
+                        var stringDataReader = (StringDataReader)dataReader;
 
                         for (int charIndex = 0; charIndex < stringDataReader.Length; charIndex++)
                         {

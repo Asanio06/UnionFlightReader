@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlightDataClass;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -6,7 +7,6 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using FlightDataClass;
 using UnionFlight;
 using UnionFlight.FlightData;
 using UnionFlightXplaneReader.DataReader;
@@ -39,7 +39,7 @@ namespace UnionFlightXplaneReader
             IPEndPoint XPlaneEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), XpPort);
             client = new UdpClient();
             client.Connect(XPlaneEP.Address, XPlaneEP.Port);
-            server = new UdpClient((IPEndPoint) client.Client.LocalEndPoint);
+            server = new UdpClient((IPEndPoint)client.Client.LocalEndPoint);
             cancelationTokenSource = new CancellationTokenSource();
         }
 
@@ -106,9 +106,9 @@ namespace UnionFlightXplaneReader
 
                         if (valueType == typeof(string))
                         {
-                            var charDataRef = (CharDataRefLink) dataRefLink;
+                            var charDataRef = (CharDataRefLink)dataRefLink;
                             var charIndex = charDataRef.CharIndex;
-                            var stringDataReader = (StringDataReader) charDataRef.dataReader;
+                            var stringDataReader = (StringDataReader)charDataRef.dataReader;
                             var character = Convert.ToChar(Convert.ToInt32(value));
 
 
@@ -134,8 +134,9 @@ namespace UnionFlightXplaneReader
 
         private void requestDataRefs()
         {
-            foreach (var (id, dataRefLink) in dataRefLinksDictionary)
+            foreach (var (id, dataRefLink) in dataRefLinksDictionary.Select(x => (x.Key, x.Value)))
             {
+
                 var dg = new XPDatagram();
                 dg.Add("RREF");
                 dg.Add(dataRefLink.Frequency);

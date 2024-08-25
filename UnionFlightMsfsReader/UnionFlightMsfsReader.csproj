@@ -1,7 +1,21 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
+	<LangVersion>latest</LangVersion>
+	<ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <ItemGroup>
+	<ProjectReference Include="..\FlightDataClass\FlightDataClass.csproj" />
+  </ItemGroup>
+	<ItemGroup>
+		<Reference Include="Microsoft.FlightSimulator.SimConnect">
+			<HintPath>Simconnect\Microsoft.FlightSimulator.SimConnect.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Simconnect\SimConnect.dll" Link="SimConnect.dll">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</EmbeddedResource>
+	</ItemGroup>
 </Project>

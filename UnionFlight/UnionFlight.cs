@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FlightDataClass;
+﻿using FlightDataClass;
 using UnionFlight.FlightData;
+using UnionFlightMsfsReader;
 using UnionFlightXplaneReader;
 
 namespace UnionFlight
 {
     public class UnionFlight : IUnionFlight
     {
-        private List<IFlightReader> _flightReaders = new List<IFlightReader>() {XPReader.Instance};
+        private List<IFlightReader> _flightReaders = new List<IFlightReader>() { XPReader.Instance, MsfsReader.Instance };
 
         private IFlightReader? _flightReader = null;
 
@@ -67,7 +63,7 @@ namespace UnionFlight
             return true;
         }
 
-        private UnionFlight(){}
+        private UnionFlight() { }
 
         public static UnionFlight Instance
         {

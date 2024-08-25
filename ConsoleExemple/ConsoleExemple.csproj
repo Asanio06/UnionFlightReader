@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
@@ -6,5 +6,8 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\UnionFlight\UnionFlight.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
 </Project>
