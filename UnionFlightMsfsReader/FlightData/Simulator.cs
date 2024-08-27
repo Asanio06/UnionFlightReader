@@ -11,6 +11,6 @@ namespace UnionFlightMsfsReader.FlightData
 
         public bool? IsSimPaused => throw new NotImplementedException();
 
-        public string? SimulatorName => throw new NotImplementedException();
+        public string? SimulatorName => "Microsoft Flight Simulator";
     }
 }

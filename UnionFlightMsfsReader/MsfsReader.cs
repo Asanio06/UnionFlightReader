@@ -10,7 +10,6 @@ namespace UnionFlightMsfsReader
     {
         private bool? isSimLaunched;
 
-        // SimConnect object
         SimConnect? simconnect = null;
 
         private const int CheckInterval_ms = 2000;
@@ -61,11 +60,8 @@ namespace UnionFlightMsfsReader
         {
             if (simconnect != null)
             {
-                // Dispose serves the same purpose as SimConnect_Close()
                 simconnect.Dispose();
                 simconnect = null;
-
-                // TODO: Log
             }
         }
 
@@ -80,7 +76,7 @@ namespace UnionFlightMsfsReader
             catch (COMException ex)
             {
                 // TODO : Message d'erreur
-                Console.WriteLine(ex.Message);
+
             }
         }
 
