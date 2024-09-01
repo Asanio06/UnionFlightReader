@@ -12,6 +12,9 @@ namespace UnionFlightMsfsReader
             new DataRequestHandler(AircraftReader.Instance.Altitude,"INDICATED ALTITUDE CALIBRATED", "feet", SIMCONNECT_DATATYPE.FLOAT64,SIMCONNECT_SIMOBJECT_TYPE.USER),
             new DataRequestHandler(AircraftReader.Instance.Name,"TITLE", null, SIMCONNECT_DATATYPE.STRING128,SIMCONNECT_SIMOBJECT_TYPE.USER),
             new DataRequestHandler(AircraftReader.Instance.TailNumber,"ATC ID", null, SIMCONNECT_DATATYPE.STRING128,SIMCONNECT_SIMOBJECT_TYPE.USER),
+            new DataRequestHandler(AircraftReader.Instance.IndicatedAirspeed,"AIRSPEED INDICATED", "Knots", SIMCONNECT_DATATYPE.FLOAT64,SIMCONNECT_SIMOBJECT_TYPE.USER),
+            new DataRequestHandler(AircraftReader.Instance.TrueAirspeed,"AIRSPEED TRUE", "Knots", SIMCONNECT_DATATYPE.FLOAT64,SIMCONNECT_SIMOBJECT_TYPE.USER),
+            new DataRequestHandler(AircraftReader.Instance.Groundspeed,"GROUND VELOCITY", "Knots", SIMCONNECT_DATATYPE.FLOAT64,SIMCONNECT_SIMOBJECT_TYPE.USER),
             ];
 
 

@@ -37,16 +37,15 @@ namespace ConsoleExemple
 
                     Console.WriteLine(
                         $"Name = {aircraft.Name}");
-                    //
-                    //                    Console.WriteLine(
-                    //                        $"IndicatedAirspeedReader = {format(aircraft.IndicatedAirspeed)}");
-                    //
-                    //                    Console.WriteLine(
-                    //                        $"TrueAirspeed = {format(aircraft.TrueAirspeed)}");
-                    //
-                    //                    Console.WriteLine(
-                    //                        $"Groundspeed = {format(aircraft.Groundspeed)}");
-                    //
+
+                    Console.WriteLine(
+                        $"IndicatedAirspeed = {format(aircraft.IndicatedAirspeed)}");
+
+                    Console.WriteLine(
+                        $"TrueAirspeed = {format(aircraft.TrueAirspeed)}");
+
+                    Console.WriteLine(
+                        $"Groundspeed = {format(aircraft.Groundspeed)}");
 
                     //
                     //

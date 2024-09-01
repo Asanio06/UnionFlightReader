@@ -4,11 +4,17 @@ namespace UnionFlightMsfsReader
 {
     internal class Aircraft : IAircraft
     {
-        public float? Groundspeed => throw new NotImplementedException();
 
-        public float? IndicatedAirspeed => throw new NotImplementedException();
 
-        public float? TrueAirspeed => throw new NotImplementedException();
+        private AircraftReader _aircraftReader = AircraftReader.Instance;
+
+
+
+        public float? Groundspeed => _aircraftReader.Groundspeed.Value;
+
+        public float? IndicatedAirspeed => _aircraftReader.IndicatedAirspeed.Value;
+
+        public float? TrueAirspeed => _aircraftReader.TrueAirspeed.Value;
 
         public double? Altitude => AircraftReader.Instance.Altitude.Value;
 

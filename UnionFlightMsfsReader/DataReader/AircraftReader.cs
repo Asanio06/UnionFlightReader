@@ -6,6 +6,9 @@
         public FloatDataReader Altitude = new();
         public StringDataReader Name = new();
         public StringDataReader TailNumber = new();
+        public FloatDataReader TrueAirspeed = new();
+        public FloatDataReader IndicatedAirspeed = new();
+        public FloatDataReader Groundspeed = new();
 
 
         private AircraftReader()

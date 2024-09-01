@@ -30,7 +30,7 @@ namespace UnionFlightMsfsReader
 
         private CancellationTokenSource cancelationTokenSource;
 
-        private const int CheckInterval_ms = 5000;
+        private const int CheckInterval_ms = 1000;
 
 
 
