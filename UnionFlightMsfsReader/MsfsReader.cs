@@ -12,14 +12,19 @@ namespace UnionFlightMsfsReader
 
         SimConnect? simconnect = null;
 
-        private const int CheckInterval_ms = 2000;
+        private const int CheckInterval_ms = 500;
+
+        private EventWaitHandle eventHandle = new EventWaitHandle(false, EventResetMode.AutoReset);
+        private Thread? simconnectReceiveMessageThread = null;
+
+
 
 
         private CancellationTokenSource cancelationTokenSource = new CancellationTokenSource();
 
         public IFlight flight => throw new NotImplementedException();
 
-        public IAircraft aircraft => throw new NotImplementedException();
+        public IAircraft aircraft => Aircraft.Instance;
 
         public ISim simulator => throw new NotImplementedException();
 
@@ -44,16 +49,24 @@ namespace UnionFlightMsfsReader
                 return;
             }
 
-            var token = cancelationTokenSource.Token;
+            DataRequestManager.Instance.manageDataRequest(simconnect);
+        }
 
-            Task.Factory.StartNew(async () =>
+        private void SimConnect_MessageReceiveThreadHandler()
+        {
+            while (true)
             {
-                while (!token.IsCancellationRequested)
+                eventHandle.WaitOne();
+
+                try
                 {
                     simconnect.ReceiveMessage();
-                    await Task.Delay(CheckInterval_ms).ConfigureAwait(false);
                 }
-            }, token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
+                catch
+                {
+                    // ignored
+                }
+            }
         }
 
         public void stop()
@@ -64,22 +77,6 @@ namespace UnionFlightMsfsReader
                 simconnect = null;
             }
         }
-
-
-        private MsfsReader()
-        {
-            try
-            {
-                simconnect = new SimConnect("UnionFlight", IntPtr.Zero, 0, null, 0);
-                initSimConnectEssentialsEvents();
-            }
-            catch (COMException ex)
-            {
-                // TODO : Message d'erreur
-
-            }
-        }
-
 
         private void initSimConnectEssentialsEvents()
         {
@@ -102,8 +99,27 @@ namespace UnionFlightMsfsReader
             simconnect.OnRecvException += new SimConnect.RecvExceptionEventHandler((sender, data) =>
                 {
                     // TODO: Logging
+                    Console.WriteLine("Exception");
                 }
             );
+        }
+
+
+        private MsfsReader()
+        {
+            try
+            {
+                simconnect = new SimConnect("UnionFlight", IntPtr.Zero, 0, eventHandle, 0);
+                simconnectReceiveMessageThread = new Thread(new ThreadStart(SimConnect_MessageReceiveThreadHandler));
+                simconnectReceiveMessageThread.IsBackground = true;
+                simconnectReceiveMessageThread.Start();
+                initSimConnectEssentialsEvents();
+            }
+            catch (COMException ex)
+            {
+                // TODO : Message d'erreur
+
+            }
         }
 
 

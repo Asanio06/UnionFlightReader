@@ -21,17 +21,19 @@ namespace ConsoleExemple
                 if (unionFlight.IsLaunched())
                 {
                     //var simulator = unionFlight.simulator;
-                    //var aircraft = unionFlight.aircraft;
+                    var aircraft = unionFlight.aircraft;
 
                     Console.WriteLine(
                         $"-----------------------------------------------------------");
+
+                    Console.WriteLine($"Altitude = {format(aircraft.Altitude)}");
 
                     //Console.WriteLine($"IsFlightLaunched = {simulator.IsFlightLaunched}");
                     //Console.WriteLine($"SimulatorName = {simulator.SimulatorName}");
                     //Console.WriteLine($"IsPaused = {simulator.IsSimPaused}");
 
-                    //                    Console.WriteLine(
-                    //                        $"TailNumberReader = {aircraft.TailNumber}");
+                    //Console.WriteLine(
+                    //    $"TailNumberReader = {aircraft.TailNumber}");
                     //
                     //                    Console.WriteLine(
                     //                        $"IndicatedAirspeedReader = {format(aircraft.IndicatedAirspeed)}");
@@ -46,8 +48,7 @@ namespace ConsoleExemple
                     //                        $"Name = {aircraft.Name}");
                     //
                     //
-                    //                    Console.WriteLine(
-                    //                        $"Altitude = {format(aircraft.Altitude)}");
+
                     //
                     //
                     //                    Console.WriteLine(

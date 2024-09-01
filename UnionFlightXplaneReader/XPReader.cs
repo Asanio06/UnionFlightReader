@@ -134,7 +134,7 @@ namespace UnionFlightXplaneReader
 
         private void requestDataRefs()
         {
-            foreach (var (id, dataRefLink) in dataRefLinksDictionary.Select(x => (x.Key, x.Value)))
+            foreach (var (id, dataRefLink) in dataRefLinksDictionary)
             {
 
                 var dg = new XPDatagram();
