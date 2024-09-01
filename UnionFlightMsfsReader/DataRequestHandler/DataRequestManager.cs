@@ -95,7 +95,7 @@ namespace UnionFlightMsfsReader
                 {
 
                     simconnect.RegisterDataDefineStruct<FakeStructToSupportStringDataRequest>((DEFINITIONS)index);
-                    break;
+                    continue;
                 }
 
                 simconnect.RegisterDataDefineStruct<double>((DEFINITIONS)index);

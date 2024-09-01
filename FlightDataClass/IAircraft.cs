@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UnionFlight.FlightData
+﻿namespace UnionFlight.FlightData
 {
     public interface IAircraft
     {
@@ -20,7 +14,7 @@ namespace UnionFlight.FlightData
         public float? VerticalSpeed { get; }
         public float? Heading { get; }
 
-        public string TailNumber { get; }
+        public string? TailNumber { get; }
 
         public string? Name { get; }
     }

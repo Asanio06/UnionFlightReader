@@ -8,10 +8,10 @@ namespace UnionFlightMsfsReader
 
         private static uint dataRequestHandlerIndex = 0;
 
-
         private static ImmutableList<DataRequestHandler> defaultDataRequestHandlers = [
             new DataRequestHandler(AircraftReader.Instance.Altitude,"INDICATED ALTITUDE CALIBRATED", "feet", SIMCONNECT_DATATYPE.FLOAT64,SIMCONNECT_SIMOBJECT_TYPE.USER),
             new DataRequestHandler(AircraftReader.Instance.Name,"TITLE", null, SIMCONNECT_DATATYPE.STRING128,SIMCONNECT_SIMOBJECT_TYPE.USER),
+            new DataRequestHandler(AircraftReader.Instance.TailNumber,"ATC ID", null, SIMCONNECT_DATATYPE.STRING128,SIMCONNECT_SIMOBJECT_TYPE.USER),
             ];
 
 

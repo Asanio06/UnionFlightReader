@@ -32,8 +32,11 @@ namespace ConsoleExemple
                     //Console.WriteLine($"SimulatorName = {simulator.SimulatorName}");
                     //Console.WriteLine($"IsPaused = {simulator.IsSimPaused}");
 
-                    //Console.WriteLine(
-                    //    $"TailNumberReader = {aircraft.TailNumber}");
+                    Console.WriteLine(
+                        $"TailNumber = {aircraft.TailNumber}");
+
+                    Console.WriteLine(
+                        $"Name = {aircraft.Name}");
                     //
                     //                    Console.WriteLine(
                     //                        $"IndicatedAirspeedReader = {format(aircraft.IndicatedAirspeed)}");
@@ -44,8 +47,7 @@ namespace ConsoleExemple
                     //                    Console.WriteLine(
                     //                        $"Groundspeed = {format(aircraft.Groundspeed)}");
                     //
-                    //                    Console.WriteLine(
-                    //                        $"Name = {aircraft.Name}");
+
                     //
                     //
 

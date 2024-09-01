@@ -24,7 +24,7 @@ namespace UnionFlightMsfsReader
 
         public string? Name => AircraftReader.Instance.Name.Value;
 
-        public string TailNumber => throw new NotImplementedException();
+        public string? TailNumber => AircraftReader.Instance.TailNumber.Value;
 
 
         private Aircraft()

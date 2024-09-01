@@ -5,6 +5,7 @@
 
         public FloatDataReader Altitude = new();
         public StringDataReader Name = new();
+        public StringDataReader TailNumber = new();
 
 
         private AircraftReader()

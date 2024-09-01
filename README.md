@@ -24,8 +24,8 @@ I thank @MaxFerretti. Thanks to the [XPlaneConnector](https://github.com/MaxFerr
 
 ### From MFS2020 :
 
-- [ ] Can get Aircraft name
-- [ ] Can get Aircraft registration
+- [x] Can get Aircraft name
+- [x] Can get Aircraft registration
 - [ ] Can get Aircraft Indicated Speed
 - [ ] Can get Aircraft groundSpeed
 - [ ] Can get Aircraft trueAirSpeed
