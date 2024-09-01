@@ -9,6 +9,7 @@
         public FloatDataReader TrueAirspeed = new();
         public FloatDataReader IndicatedAirspeed = new();
         public FloatDataReader Groundspeed = new();
+        public FloatDataReader VerticalSpeed = new();
 
 
         private AircraftReader()

@@ -5,10 +5,7 @@ namespace UnionFlightMsfsReader
     internal class Aircraft : IAircraft
     {
 
-
         private AircraftReader _aircraftReader = AircraftReader.Instance;
-
-
 
         public float? Groundspeed => _aircraftReader.Groundspeed.Value;
 
@@ -16,7 +13,7 @@ namespace UnionFlightMsfsReader
 
         public float? TrueAirspeed => _aircraftReader.TrueAirspeed.Value;
 
-        public double? Altitude => AircraftReader.Instance.Altitude.Value;
+        public double? Altitude => _aircraftReader.Altitude.Value;
 
         public double? HeightAgl => throw new NotImplementedException();
 
@@ -24,13 +21,13 @@ namespace UnionFlightMsfsReader
 
         public double? Latitude => throw new NotImplementedException();
 
-        public float? VerticalSpeed => throw new NotImplementedException();
+        public float? VerticalSpeed => _aircraftReader.VerticalSpeed.Value;
 
         public float? Heading => throw new NotImplementedException();
 
-        public string? Name => AircraftReader.Instance.Name.Value;
+        public string? Name => _aircraftReader.Name.Value;
 
-        public string? TailNumber => AircraftReader.Instance.TailNumber.Value;
+        public string? TailNumber => _aircraftReader.TailNumber.Value;
 
 
         private Aircraft()

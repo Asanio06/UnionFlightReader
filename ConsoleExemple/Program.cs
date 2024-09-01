@@ -47,6 +47,9 @@ namespace ConsoleExemple
                     Console.WriteLine(
                         $"Groundspeed = {format(aircraft.Groundspeed)}");
 
+                    Console.WriteLine(
+                        $"VerticalSpeed = {format(aircraft.VerticalSpeed)}");
+
                     //
                     //
 
@@ -55,8 +58,7 @@ namespace ConsoleExemple
                     //                    Console.WriteLine(
                     //                        $"HeightAgl = {format(aircraft.HeightAgl)}");
                     //
-                    //                    Console.WriteLine(
-                    //                        $"VerticalSpeed = {format(aircraft.VerticalSpeed)}");
+
                     //
                     //                    Console.WriteLine(
                     //                        $"Heading = {format(aircraft.Heading)}");
@@ -75,7 +77,7 @@ namespace ConsoleExemple
                     Console.WriteLine("Not Launched");
                 }
 
-                Thread.Sleep(5000);
+                Thread.Sleep(1000);
             }
         }
     }
