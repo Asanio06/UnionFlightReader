@@ -65,11 +65,11 @@ namespace ConsoleExemple
                     //
 
                     //
-                    //                    Console.WriteLine(
-                    //                        $"Latitude = {format(aircraft.Latitude)}");
-                    //
-                    //                    Console.WriteLine(
-                    //                        $"Longitude = {format(aircraft.Longitude)}");
+                    Console.WriteLine(
+                        $"Latitude = {format(aircraft.Latitude)}");
+
+                    Console.WriteLine(
+                        $"Longitude = {format(aircraft.Longitude)}");
 
                     Console.WriteLine(
                         $"-----------------------------------------------------------");

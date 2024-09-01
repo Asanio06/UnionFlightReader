@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using UnionFlight.FlightData;
+﻿using UnionFlight.FlightData;
 using UnionFlightXplaneReader.DataReader;
 
 namespace UnionFlightXplaneReader
@@ -10,7 +7,7 @@ namespace UnionFlightXplaneReader
     {
         private static AircraftReader aircraftReader = AircraftReader.Instance;
 
-        public float? IndicatedAirspeed => aircraftReader.IndicatedAirspeedReader.Value ;
+        public float? IndicatedAirspeed => aircraftReader.IndicatedAirspeedReader.Value;
 
         public float? Groundspeed => aircraftReader.Groundspeed.Value;
 
@@ -27,7 +24,7 @@ namespace UnionFlightXplaneReader
             get => aircraftReader.TailNumberReader.Value;
         }
 
-        public string? Name
+        public string Name
         {
             get => aircraftReader.NameReader.Value;
         }

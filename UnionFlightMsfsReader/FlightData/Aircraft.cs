@@ -17,9 +17,9 @@ namespace UnionFlightMsfsReader
 
         public double? HeightAgl => throw new NotImplementedException();
 
-        public double? Longitude => throw new NotImplementedException();
+        public double? Longitude => _aircraftReader.Longitude.Value;
 
-        public double? Latitude => throw new NotImplementedException();
+        public double? Latitude => _aircraftReader.Latitude.Value;
 
         public float? VerticalSpeed => _aircraftReader.VerticalSpeed.Value;
 

@@ -1,4 +1,7 @@
-﻿namespace UnionFlightMsfsReader
+﻿
+using Common;
+
+namespace UnionFlightMsfsReader
 {
     internal class AircraftReader
     {
@@ -11,6 +14,8 @@
         public FloatDataReader Groundspeed = new();
         public FloatDataReader VerticalSpeed = new();
         public FloatDataReader Heading = new();
+        public DoubleDataReader Latitude = new(Utils.getDegreesFromRadians);
+        public DoubleDataReader Longitude = new(Utils.getDegreesFromRadians);
 
 
         private AircraftReader()
