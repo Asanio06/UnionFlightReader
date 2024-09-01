@@ -16,6 +16,7 @@ namespace UnionFlightMsfsReader
             new DataRequestHandler(AircraftReader.Instance.TrueAirspeed,"AIRSPEED TRUE", "Knots", SIMCONNECT_DATATYPE.FLOAT64,SIMCONNECT_SIMOBJECT_TYPE.USER),
             new DataRequestHandler(AircraftReader.Instance.Groundspeed,"GROUND VELOCITY", "Knots", SIMCONNECT_DATATYPE.FLOAT64,SIMCONNECT_SIMOBJECT_TYPE.USER),
             new DataRequestHandler(AircraftReader.Instance.VerticalSpeed,"VERTICAL SPEED", "ft/min", SIMCONNECT_DATATYPE.FLOAT64,SIMCONNECT_SIMOBJECT_TYPE.USER),
+            new DataRequestHandler(AircraftReader.Instance.Heading,"PLANE HEADING DEGREES GYRO", "degrees", SIMCONNECT_DATATYPE.FLOAT64,SIMCONNECT_SIMOBJECT_TYPE.USER),
             ];
 
 

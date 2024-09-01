@@ -50,6 +50,9 @@ namespace ConsoleExemple
                     Console.WriteLine(
                         $"VerticalSpeed = {format(aircraft.VerticalSpeed)}");
 
+                    Console.WriteLine(
+                        $"Heading = {format(aircraft.Heading)}");
+
                     //
                     //
 
@@ -60,8 +63,7 @@ namespace ConsoleExemple
                     //
 
                     //
-                    //                    Console.WriteLine(
-                    //                        $"Heading = {format(aircraft.Heading)}");
+
                     //
                     //                    Console.WriteLine(
                     //                        $"Latitude = {format(aircraft.Latitude)}");

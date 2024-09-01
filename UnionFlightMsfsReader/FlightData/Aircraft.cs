@@ -23,7 +23,7 @@ namespace UnionFlightMsfsReader
 
         public float? VerticalSpeed => _aircraftReader.VerticalSpeed.Value;
 
-        public float? Heading => throw new NotImplementedException();
+        public float? Heading => _aircraftReader.Heading.Value;
 
         public string? Name => _aircraftReader.Name.Value;
 
