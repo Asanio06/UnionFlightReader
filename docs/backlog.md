@@ -87,6 +87,17 @@ Le plus court chemin vers un résultat MSFS/P3D visible : `A1 → A2 → A3 → 
 |---|---|---|---|---|
 | W1 | `t_9fe780b6` | Runner Windows + SDKs | — | blocked |
 
+## Commandes utiles
+
+```bash
+hermes kanban --board unionflight ls
+hermes kanban --board unionflight show t_fd2e52f2
+hermes kanban --board unionflight dispatch
+hermes kanban --board unionflight watch
+```
+
+La carte `P` (`t_fd43c65c`) est la carte parapluie ; elle reste ouverte jusqu'à la fin du programme.
+
 ## Notes d'exécution
 
 - `blocked` = prérequis humain ou matériel manquant ; `todo` = en attente de dépendances ; `ready` = dispatchable. `unblock <id>` sur une carte dont les parents sont ouverts la met en `todo` ; quand tous les parents sont `done`, le dispatcher la passe en `ready` et lance un worker.
