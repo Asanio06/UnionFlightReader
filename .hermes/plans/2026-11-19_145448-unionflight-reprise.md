@@ -18,14 +18,14 @@
 |---|---|---|
 | 0 — Socle | ✅ Fait | SDK 10.0.404, solution `src/tests/samples`, MIT, `Directory.Build.props`, `global.json`, `.editorconfig` ; anciens projets POC supprimés. |
 | 1 — Contrat/Core | ✅ Fait | `FlightSnapshot`, `IFlightSimProvider`, `FlightSimProviderBase`, `FlightSimMonitor`, `UnionFlightClient` ; 9 tests. |
-| 2 — X-Plane Web API | ✅ Fait (hors test réel) | REST + WebSocket, IDs `long`, strings statiques via REST ; 16 tests X-Plane. |
-| 3 — X-Plane UDP | ✅ Fait (hors test réel) | RREF batché, annulation propre, `TryGetValue`, reconnexion ; tests golden. |
+| 2 — X-Plane Web API | ✅ Fait (testé end-to-end) | REST + WebSocket, IDs `long`, strings statiques via REST ; 22 tests X-Plane. |
+| 3 — X-Plane UDP | ✅ Fait (testé end-to-end) | RREF batché, annulation propre, `TryGetValue`, reconnexion ; tests golden + faux serveur UDP. |
 | 4 — Hosts MSFS | ⏳ À faire | Nécessite Windows + SDK MSFS 2020/2024. |
 | 5 — Hosts P3D | ⏳ À faire | Nécessite Windows + SDK P3D v4/v5/v6. |
-| 6 — Packaging/CI | 🟡 Partiel | README, CHANGELOG, CI Linux ; métadonnées NuGet et pack à faire. |
+| 6 — Packaging/CI | 🟡 Partiel | README, CHANGELOG, CI Linux, faux serveur X-Plane (`tools/UnionFlight.FakeSim`) ; métadonnées NuGet et pack à faire. |
 | 7 — Durcissement | ⏳ À faire | `LoggerMessage`, docs XML, fuzzing, profiling. |
 
-**Vérifié le 2026-11-19 :** `dotnet build UnionFlight.sln` -> 0 warning / 0 error ; `dotnet test UnionFlight.sln` -> 25/25 ; sample sans X-Plane -> « No simulator detected » sans exception.
+**Vérifié le 2026-11-19 :** `dotnet build UnionFlight.sln` -> 0 warning / 0 error ; `dotnet test UnionFlight.sln` -> 31/31 ; sample contre `tools/UnionFlight.FakeSim` -> `Cessna 172 (N12345) | 3281 ft | 272 kt | paused=False`, sans simulateur réel.
 
 ---
 

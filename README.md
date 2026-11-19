@@ -8,8 +8,8 @@ The library exposes an immutable `FlightSnapshot` with explicit units and a prov
 
 | Simulator | Transport | Status |
 |---|---|---|
-| X-Plane 12.1.1+ | Local Web API (REST + WebSocket) | Implemented |
-| X-Plane 11 / LAN | UDP RREF (batched) | Implemented |
+| X-Plane 12.1.1+ | Local Web API (REST + WebSocket) | Implemented, end-to-end tested |
+| X-Plane 11 / LAN | UDP RREF (batched) | Implemented, end-to-end tested |
 | MSFS 2020 | SimConnect host process | Planned |
 | MSFS 2024 | SimConnect host process | Planned |
 | P3D v4/v5/v6 | SimConnect host process per version | Planned |
@@ -77,6 +77,20 @@ UnionFlight.SimConnect     Windows client + one host process per SimConnect vers
 
 SimConnect client DLLs are version-locked (MSFS 2020 vs 2024, P3D v4/v5/v6). The planned design runs one host process per version and streams NDJSON snapshots to the client, so two versions never share a process.
 
+## Run without a simulator
+
+The repository ships a fake X-Plane server (Web API + UDP RREF) so the library and the sample can be exercised on any machine:
+
+```bash
+# Terminal 1
+dotnet run --project tools/UnionFlight.FakeSim
+
+# Terminal 2
+dotnet run --project samples/UnionFlight.Sample.Console
+```
+
+The sample should print `Connected to X-Plane.` and a Cessna 172 snapshot.
+
 ## Build and test
 
 ```bash
@@ -85,7 +99,7 @@ dotnet test UnionFlight.sln
 dotnet run --project samples/UnionFlight.Sample.Console
 ```
 
-The X-Plane tests run without a simulator (fixtures and fakes). Live tests are marked `Integration` and require the corresponding simulator.
+The suite has 31 tests. X-Plane tests run without a simulator: the end-to-end tests start `FakeXPlaneServer` (Kestrel + WebSocket + UDP) and use the real `HttpClient`, `ClientWebSocket`, and `UdpClient`. Live tests against a real simulator are marked `Integration` and require the corresponding simulator.
 
 ## License
 
