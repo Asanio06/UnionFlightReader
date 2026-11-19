@@ -27,6 +27,8 @@
 
 **Vérifié le 2026-11-19 :** `dotnet build UnionFlight.sln` -> 0 warning / 0 error ; `dotnet test UnionFlight.sln` -> 31/31 ; sample contre `tools/UnionFlight.FakeSim` -> `Cessna 172 (N12345) | 3281 ft | 272 kt | paused=False`, sans simulateur réel.
 
+**Kanban (2026-11-19) :** board `unionflight` (racine `P` = `t_fd43c65c`), 27 cartes avec dépendances et critères d'acceptation ; backlog de référence dans `docs/backlog.md`. Première carte `A1` (`t_fd2e52f2`, contrat IPC) dispatchée en worktree. Les cartes B/C/F2/F3 sont **Windows-only** (SDK + simulateur) et ne peuvent pas tourner sur le VPS Linux.
+
 ---
 
 ## 1. Verdict
