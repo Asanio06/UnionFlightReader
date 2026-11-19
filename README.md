@@ -1,62 +1,92 @@
-# UnionFlight Data Reader
+# UnionFlight
 
+One .NET API for flight simulator telemetry: **X-Plane 11/12**, **MSFS 2020/2024**, and **Prepar3D v4/v5/v6**.
 
-## MVP
+The library exposes an immutable `FlightSnapshot` with explicit units and a provider per simulator family. The orchestrator probes providers, starts the available one, and re-probes after a fault.
 
-### From Xplane :
+## Status
 
-The objective is to get data from xplane via a UDP connection with the simulator
+| Simulator | Transport | Status |
+|---|---|---|
+| X-Plane 12.1.1+ | Local Web API (REST + WebSocket) | Implemented |
+| X-Plane 11 / LAN | UDP RREF (batched) | Implemented |
+| MSFS 2020 | SimConnect host process | Planned |
+| MSFS 2024 | SimConnect host process | Planned |
+| P3D v4/v5/v6 | SimConnect host process per version | Planned |
 
-I thank @MaxFerretti. Thanks to the [XPlaneConnector](https://github.com/MaxFerretti/XPlaneConnector) repo  I was able to understand more quickly how udp works with Xplane.
+- **Read-only in v1**: no dataref/SimVar writes, commands, or outgoing events.
+- **.NET 10 LTS** only.
+- **MIT** licensed.
 
-- [x] Can get Aircraft name
-- [x] Can get Aircraft registration
-- [x] Can get Aircraft Indicated Speed
-- [x] Can get Aircraft groundSpeed
-- [x] Can get Aircraft trueAirSpeed
-- [x] Can get Aircraft heading
-- [x] Can get Aircraft verticalSpeed
-- [x] Can get Aircraft Position
-- [x] Know if sim is launched
-- [x] Can close connection
-- [x] Know if sim is paused
-- [x] Know if flight is started
+The working roadmap lives in `.hermes/plans/2026-11-19_145448-unionflight-reprise.md`.
 
-### From MFS2020 :
+## Quick start
 
-- [ ] Can get Aircraft name
-- [ ] Can get Aircraft registration
-- [ ] Can get Aircraft Indicated Speed
-- [ ] Can get Aircraft groundSpeed
-- [ ] Can get Aircraft trueAirSpeed
-- [ ] Can get Aircraft heading
-- [ ] Can get Aircraft verticalSpeed
-- [ ] Can get Aircraft Position
-- [ ] Know if sim is launched
-- [ ] Can close connection
-- [ ] Know if sim is paused
-- [ ] Know if flight is started
+```csharp
+using UnionFlight;
+using UnionFlight.XPlane;
 
+await using var client = new UnionFlightClient(new IFlightSimProvider[]
+{
+    new XPlaneProvider()
+});
 
-### From P3D :
+client.SnapshotReceived += (_, snapshot) =>
+{
+    Console.WriteLine(
+        $"{snapshot.Simulator} | {snapshot.AircraftTitle} | " +
+        $"{snapshot.AltitudeFt:F0} ft | {snapshot.GroundspeedKt:F0} kt | " +
+        $"paused={snapshot.IsPaused}");
+};
 
-- [ ] Can get Aircraft name
-- [ ] Can get Aircraft registration
-- [ ] Can get Aircraft Indicated Speed
-- [ ] Can get Aircraft groundSpeed
-- [ ] Can get Aircraft trueAirSpeed
-- [ ] Can get Aircraft heading
-- [ ] Can get Aircraft verticalSpeed
-- [ ] Can get Aircraft Position
-- [ ] Know if sim is launched
-- [ ] Can close connection
-- [ ] Know if sim is paused
-- [ ] Know if flight is started
+await client.StartAsync();
 
+if (client.ActiveProvider is null)
+{
+    Console.WriteLine("No simulator detected.");
+    return;
+}
 
-### Folder structure :
-- [x] 1 folder for lib source code + 1 folder for exemple
+await Task.Delay(Timeout.Infinite);
+```
 
-### CI/CD :
+## Snapshot contract
 
-- [ ] Can deploy package on nuget via Github Actions
+Units are in the property names; unsupported values stay `null`.
+
+| Property | Unit |
+|---|---|
+| `LatitudeDeg`, `LongitudeDeg` | degrees |
+| `AltitudeFt`, `HeightAglFt` | feet |
+| `IndicatedAirspeedKt`, `TrueAirspeedKt`, `GroundspeedKt` | knots |
+| `VerticalSpeedFpm` | feet per minute |
+| `HeadingMagDeg` | degrees (magnetic) |
+| `IsFlightLoaded` | true when a flight is loaded |
+| `IsPaused` | null when unknown, otherwise paused/unpaused |
+
+`IsFlightLoaded`, `IsPaused`, and the connection state are independent. A paused flight is still loaded.
+
+## Architecture
+
+```
+UnionFlight.Abstractions   contracts, FlightSnapshot, provider base
+UnionFlight.Core           FlightSimMonitor, probe/failover, facade
+UnionFlight.XPlane         Web API provider + UDP RREF fallback
+UnionFlight.SimConnect     Windows client + one host process per SimConnect version (planned)
+```
+
+SimConnect client DLLs are version-locked (MSFS 2020 vs 2024, P3D v4/v5/v6). The planned design runs one host process per version and streams NDJSON snapshots to the client, so two versions never share a process.
+
+## Build and test
+
+```bash
+dotnet build UnionFlight.sln
+dotnet test UnionFlight.sln
+dotnet run --project samples/UnionFlight.Sample.Console
+```
+
+The X-Plane tests run without a simulator (fixtures and fakes). Live tests are marked `Integration` and require the corresponding simulator.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
