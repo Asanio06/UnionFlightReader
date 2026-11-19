@@ -530,3 +530,6 @@ fabric.properties
 .idea
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij
+
+# Hermes kanban worktrees (local only)
+.worktrees/
