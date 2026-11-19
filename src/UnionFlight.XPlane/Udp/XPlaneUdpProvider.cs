@@ -256,19 +256,19 @@ public sealed class XPlaneUdpProvider : FlightSimProviderBase
         for (var i = 0; i < XPlaneState.TailNumberLength; i++)
         {
             var index = i;
-            _handlers[1000 + i] = (state, value) => XPlaneState.SetString(state.TailNumber, index, value);
+            _handlers[1000 + i] = (state, value) => state.SetString(state.TailNumber, index, value);
         }
 
         for (var i = 0; i < XPlaneState.UiNameLength; i++)
         {
             var index = i;
-            _handlers[2000 + i] = (state, value) => XPlaneState.SetString(state.UiName, index, value);
+            _handlers[2000 + i] = (state, value) => state.SetString(state.UiName, index, value);
         }
 
         for (var i = 0; i < XPlaneState.DescriptionLength; i++)
         {
             var index = i;
-            _handlers[3000 + i] = (state, value) => XPlaneState.SetString(state.Description, index, value);
+            _handlers[3000 + i] = (state, value) => state.SetString(state.Description, index, value);
         }
     }
 

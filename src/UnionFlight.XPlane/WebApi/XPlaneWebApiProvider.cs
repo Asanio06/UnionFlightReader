@@ -191,7 +191,7 @@ public sealed class XPlaneWebApiProvider : FlightSimProviderBase
         {
             var tail = await _rest.GetDatarefDataStringAsync(tailId.Value, cancellationToken)
                 .ConfigureAwait(false);
-            XPlaneState.SetString(_state.TailNumber, tail);
+            _state.SetString(_state.TailNumber, tail);
         }
 
         var uiNameId = await _rest.ResolveDatarefAsync(XPlaneDatarefs.UiName, cancellationToken)
@@ -200,7 +200,7 @@ public sealed class XPlaneWebApiProvider : FlightSimProviderBase
         {
             var uiName = await _rest.GetDatarefDataStringAsync(uiNameId.Value, cancellationToken)
                 .ConfigureAwait(false);
-            XPlaneState.SetString(_state.UiName, uiName);
+            _state.SetString(_state.UiName, uiName);
         }
 
         var descriptionId = await _rest.ResolveDatarefAsync(XPlaneDatarefs.Description, cancellationToken)
@@ -209,7 +209,7 @@ public sealed class XPlaneWebApiProvider : FlightSimProviderBase
         {
             var description = await _rest.GetDatarefDataStringAsync(descriptionId.Value, cancellationToken)
                 .ConfigureAwait(false);
-            XPlaneState.SetString(_state.Description, description);
+            _state.SetString(_state.Description, description);
         }
     }
 

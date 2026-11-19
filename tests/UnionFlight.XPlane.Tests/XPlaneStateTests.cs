@@ -41,8 +41,10 @@ public sealed class XPlaneStateTests
 
         for (var i = 0; i < tail.Length; i++)
         {
-            XPlaneState.SetString(state.TailNumber, i, tail[i]);
+            state.SetString(state.TailNumber, i, tail[i]);
         }
+
+        state.SetString(state.TailNumber, XPlaneState.TailNumberLength - 1, 0);
 
         Assert.Equal(tail, state.GetTailNumber());
     }
@@ -51,10 +53,10 @@ public sealed class XPlaneStateTests
     public void GetTitle_Prefers_UiName_And_Falls_Back_To_Description()
     {
         var state = new XPlaneState();
-        XPlaneState.SetString(state.Description, "Cessna 172 (XP11)");
+        state.SetString(state.Description, "Cessna 172 (XP11)");
         Assert.Equal("Cessna 172 (XP11)", state.GetTitle());
 
-        XPlaneState.SetString(state.UiName, "Cessna 172 (XP12)");
+        state.SetString(state.UiName, "Cessna 172 (XP12)");
         Assert.Equal("Cessna 172 (XP12)", state.GetTitle());
     }
 

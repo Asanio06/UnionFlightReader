@@ -28,11 +28,24 @@ internal sealed class XPlaneState
     public readonly char[] UiName = new char[UiNameLength];
     public readonly char[] Description = new char[DescriptionLength];
 
-    public string? GetTailNumber() => ReadString(TailNumber);
+    public bool TailNumberReady;
+    public bool UiNameReady;
+    public bool DescriptionReady;
 
-    public string? GetTitle() => ReadString(UiName) ?? ReadString(Description);
+    public string? GetTailNumber() => TailNumberReady ? ReadString(TailNumber) : null;
 
-    public static void SetString(char[] buffer, int index, float value)
+    public string? GetTitle()
+    {
+        var uiName = UiNameReady ? ReadString(UiName) : null;
+        if (uiName is not null)
+        {
+            return uiName;
+        }
+
+        return DescriptionReady ? ReadString(Description) : null;
+    }
+
+    public void SetString(char[] buffer, int index, float value)
     {
         if ((uint)index >= (uint)buffer.Length)
         {
@@ -49,17 +62,41 @@ internal sealed class XPlaneState
         {
             buffer[index] = (char)code;
         }
+
+        // A NUL terminates the string; the last index also marks completion
+        // when the simulator pads the whole buffer. This tolerates a lost
+        // trailing packet.
+        if (code == 0 || index == buffer.Length - 1)
+        {
+            MarkReady(buffer);
+        }
     }
 
-    public static void SetString(char[] buffer, string? value)
+    public void SetString(char[] buffer, string? value)
     {
         Array.Clear(buffer);
-        if (string.IsNullOrEmpty(value))
+        if (!string.IsNullOrEmpty(value))
         {
-            return;
+            value.CopyTo(0, buffer, 0, Math.Min(value.Length, buffer.Length));
         }
 
-        value.CopyTo(0, buffer, 0, Math.Min(value.Length, buffer.Length));
+        MarkReady(buffer);
+    }
+
+    private void MarkReady(char[] buffer)
+    {
+        if (ReferenceEquals(buffer, TailNumber))
+        {
+            TailNumberReady = true;
+        }
+        else if (ReferenceEquals(buffer, UiName))
+        {
+            UiNameReady = true;
+        }
+        else if (ReferenceEquals(buffer, Description))
+        {
+            DescriptionReady = true;
+        }
     }
 
     public FlightSnapshot ToSnapshot(SimulatorKind kind, string? version)
@@ -111,6 +148,6 @@ internal sealed class XPlaneState
         }
 
         var value = internalVersion.Value;
-        return $"X-Plane {value / 10000}.{(value / 100) % 100}.{value % 100}";
+        return $"{value / 10000}.{(value / 100) % 100}.{value % 100}";
     }
 }
